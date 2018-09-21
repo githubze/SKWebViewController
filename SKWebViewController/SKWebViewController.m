@@ -93,15 +93,12 @@
 - (void)setBarButtonItem
 {
     
-    self.negativeSpacer = [[UIBarButtonItem alloc]   initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace   target:nil action:nil];
-    self.negativeSpacer.width = 0;
-    
     //设置关闭按钮，以及关闭按钮和返回按钮之间的距离
-    self.leftBarButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"返回-1"] style:UIBarButtonItemStylePlain target:self action:@selector(selectedToBack)];
+    self.leftBarButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"返回"] style:UIBarButtonItemStylePlain target:self action:@selector(selectedToBack)];
     if (IS_SYSTEM_IOS11) {
-        self.leftBarButton.imageInsets = UIEdgeInsetsMake(0, -13, 0, 13);
+        self.leftBarButton.imageInsets = UIEdgeInsetsMake(0, -3, 0, 3);
     }
-    self.navigationItem.leftBarButtonItems = @[self.negativeSpacer,self.leftBarButton];
+    self.navigationItem.leftBarButtonItem = self.leftBarButton;
     
     //设置距离左边屏幕的宽度距离
     
