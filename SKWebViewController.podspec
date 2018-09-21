@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SKWebViewController"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "An iOS webView."
   s.homepage     = "https://github.com/githubze/SKWebViewController"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }

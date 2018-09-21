@@ -171,7 +171,7 @@
             [self.progress setProgress:self.wkWebview.estimatedProgress animated:YES];
             if(self.wkWebview.estimatedProgress >= 1.0f)
             {
-                [UIView animateWithDuration:2.0f
+                [UIView animateWithDuration:1.5f
                                       delay:0.0f
                                     options:UIViewAnimationOptionCurveEaseOut
                                  animations:^{
