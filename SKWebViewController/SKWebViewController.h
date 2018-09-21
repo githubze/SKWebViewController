@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeakScriptMessageDelegate.h"
 
 @interface SKWebViewController : UIViewController
 
@@ -16,5 +17,10 @@
  isgoback
  */
 @property (nonatomic, assign) BOOL isGoBack;
+
+/**
+ name
+ */
+@property (nonatomic, assign) BOOL progressLineHidden;
 
 @end

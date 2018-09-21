@@ -147,7 +147,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor lightGrayColor];
+    
+    //js触发 原生实现
+//    [[self.wkWebview configuration].userContentController addScriptMessageHandler:[[WeakScriptMessageDelegate alloc] initWithDelegate:self] name:@"topayZfb"];
+//    [[self.wkWebview configuration].userContentController addScriptMessageHandler:[[WeakScriptMessageDelegate alloc] initWithDelegate:self] name:@"topayWx"];
 }
+
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
+{
+    NSLog(@"--------%@",message.body);
+    
+    if ([message.name isEqualToString:@"topayZfb"]) {
+       
+    }else if([message.name isEqualToString:@"topayWx"]){
+        
+        
+    }
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -206,11 +224,11 @@
         {
             if (self.wkWebview.canGoBack == 1)
             {
-                self.navigationItem.leftBarButtonItems = @[self.negativeSpacer,self.leftBarButton];
+                self.navigationItem.leftBarButtonItem = self.leftBarButton;
             }
             else
             {
-                self.navigationItem.leftBarButtonItems = @[self.negativeSpacer,self.leftBarButton];
+                self.navigationItem.leftBarButtonItem = self.leftBarButton;
             }
         }
         else
@@ -246,11 +264,32 @@
 {
     [super viewDidDisappear:animated];
 }
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+{
+    //网页结束 原生传值给js
+//    if (self.isPay) {
+//        self.isPay = NO;
+//        NSString * jsStr  =[NSString stringWithFormat:@" backPayResult('%d')",self.isSuccess];
+//
+//        [self.wkWebview evaluateJavaScript:jsStr completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+//            NSLog(@"----%@",error);
+//            //此处可以打印error.
+//
+//        }];
+//    }
+    
+}
+
 #pragma mark 移除观察者
 - (void)dealloc
 {
     [self.wkWebview removeObserver:self forKeyPath:@"estimatedProgress"];
     [self.wkWebview removeObserver:self forKeyPath:@"canGoBack"];
     [self.wkWebview removeObserver:self forKeyPath:@"title"];
+    
+    //移除js监听
+//    [[self.wkWebview configuration].userContentController removeScriptMessageHandlerForName:@"topayZfb"];
+//    [[self.wkWebview configuration].userContentController removeScriptMessageHandlerForName:@"topayWx"];
 }
 @end
